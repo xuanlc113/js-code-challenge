@@ -5,25 +5,48 @@
   <title>Fancy Form</title>
 
   <!-- You may add more stuff here -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
   <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- You may wrap the form in your own elements if necessary. -->
-  <form onsubmit="return !1">
+  <form id="form">
     <label for="input-address">Bitcoin Address</label>
     <input id="input-address" placeholder="16q4PinynazaMYfv24juNLkbjkDQxJo2dc" />
+    <p id="input-address-error" class="input-error">
+      Please enter a valid address
+    </p>
 
-    <label for="input-amount">Amount to send</label>
+    <label for="input-amount">Amount</label>
     <input id="input-amount" placeholder="0.0000" />
+    <p id="input-amount-error" class="input-error">
+      Please enter a valid amount
+    </p>
 
-    <label for="input-otp">OTP Authentication</label>
-    <input type="number" id="input-otp" placeholder="SMS OTP" />
+    <div class="otp-header">
+      <label for="input-otp">Enter OTP</label>
+      <p onclick="">Resend OTP</p>
+    </div>
+    <div class="input-otp-container">
+      <input type="text" id="digit-1" class="input-otp" maxlength="1" onkeyup="clickEvent(this,'digit-2')" />
+      <input type="text" id="digit-2" class="input-otp" maxlength="1" onkeyup="clickEvent(this,'digit-3')" />
+      <input type="text" id="digit-3" class="input-otp" maxlength="1" onkeyup="clickEvent(this,'digit-4')" />
+      <input type="text" id="digit-4" class="input-otp" maxlength="1" onkeyup="clickEvent(this,'digit-5')" />
+      <input type="text" id="digit-5" class="input-otp" maxlength="1" onkeyup="clickEvent(this,'digit-6')"/>
+      <input type="text" id="digit-6" maxlength="1" class="input-otp" />
+    </div>
+    <p id="input-otp-error" class="input-error">
+      OTP verification failed
+    </p>
 
-    <button>SEND BTC</button>
+    <button id="form-button">Send Bitcoin</button>
   </form>
+
 </body>
 
 </html>
